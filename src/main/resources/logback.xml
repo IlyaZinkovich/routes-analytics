@@ -1,0 +1,49 @@
+<configuration debug="true">
+    <property name="pattern" value="%d{yyyy.MM.dd HH:mm:ss.SSS z}-[id:%X{requestId}] [%thread] %-5level %lo{1} - %msg%n" />
+    <property name="logdir" value="runtime/logs" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>UTF-8</charset>
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${pattern}</pattern>
+        </encoder>
+
+        <file>${logdir}/advisor.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <FileNamePattern>${logdir}/advisor.%i.log.zip</FileNamePattern>
+            <MinIndex>1</MinIndex>
+            <MaxIndex>10</MaxIndex>
+        </rollingPolicy>
+
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>100MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+    <appender name="ASYNCSTDOUT" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <appender-ref ref="STDOUT" />
+    </appender>
+
+    <appender name="ASYNCFILE" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <appender-ref ref="FILE" />
+    </appender>
+
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.hibernate" level="WARN"/>
+
+    <root>
+        <level value="DEBUG" />
+        <appender-ref ref="ASYNCSTDOUT" />
+        <appender-ref ref="ASYNCFILE" />
+    </root>
+</configuration>

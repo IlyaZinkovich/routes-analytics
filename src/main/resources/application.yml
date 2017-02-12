@@ -1,0 +1,5 @@
+neo4j:
+  driver: org.neo4j.ogm.drivers.http.driver.HttpDriver
+  user: neo4j
+  password: root
+  uri: http://localhost:7474
