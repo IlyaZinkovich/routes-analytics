@@ -95,10 +95,4 @@ public class Predictor {
             throw new RuntimeException(e);
         }
     }
-
-//    public static void main(String[] args) {
-//        Predictor predictor = new Predictor();
-//        predictor.train("output/Germany");
-//        predictor.test("output/Germany");
-//    }
 }

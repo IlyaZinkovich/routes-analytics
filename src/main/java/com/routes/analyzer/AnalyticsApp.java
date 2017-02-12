@@ -15,8 +15,8 @@ import java.time.LocalDate;
 import static org.springframework.boot.SpringApplication.run;
 
 @SpringBootApplication
-@Import(RepositoryConfig.class)
 @EnableSwagger2
+@Import(RepositoryConfig.class)
 public class AnalyticsApp {
 
     @Bean
