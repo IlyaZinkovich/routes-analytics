@@ -1,9 +1,7 @@
-package com.routes.analyzer;
+package com.routes.analytics;
 
-import com.routes.analyzer.repository.RepositoryConfig;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -16,7 +14,6 @@ import static org.springframework.boot.SpringApplication.run;
 
 @SpringBootApplication
 @EnableSwagger2
-@Import(RepositoryConfig.class)
 public class AnalyticsApp {
 
     @Bean

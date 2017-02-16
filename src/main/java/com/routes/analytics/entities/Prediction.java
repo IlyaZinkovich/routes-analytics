@@ -1,9 +1,14 @@
-package com.routes.analyzer.model;
+package com.routes.analytics.entities;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
 
+import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
+
 public class Prediction {
 
+    @JsonFormat(shape = STRING, pattern = "yyyy-MM-dd")
     private LocalDate date;
     private String country;
     private Double count;

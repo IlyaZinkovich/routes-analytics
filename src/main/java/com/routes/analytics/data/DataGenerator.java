@@ -1,4 +1,4 @@
-package com.routes.analyzer.service;
+package com.routes.analytics.data;
 
 import org.datavec.api.records.writer.impl.csv.CSVRecordWriter;
 import org.datavec.api.writable.Text;
@@ -21,16 +21,14 @@ import static java.util.stream.Collectors.toList;
 import static java.util.stream.IntStream.range;
 
 @Service
-public class TestDataPreparer {
+public class DataGenerator {
 
     private static final String COUNTRIES_LIST_FILE_NAME = "countries.txt";
     private static final String TEST_DATA_DIRECTORY = "testData/";
     private final List<String> countries = readCountries();
 
     public File prepareTestData(String destinationName, Map<LocalDate, Map<String, Integer>> routesSeries) {
-        String testDataFileName = TEST_DATA_DIRECTORY + destinationName;
-        deleteOldTestDataFile(testDataFileName);
-        File testDataFile = createFileWithName(testDataFileName);
+        File testDataFile = createTestDataFile(destinationName);
         CSVRecordWriter writer = getWriterForFile(testDataFile);
         writeRow(writer, singletonList(new Text("@RELATION routes")));
         writeRow(writer, singletonList(new Text("@ATTRIBUTE date DATE \"yyyy-MM-dd\"")));
@@ -43,6 +41,12 @@ public class TestDataPreparer {
 
     public List<String> getAvailableCountries() {
         return countries;
+    }
+
+    private File createTestDataFile(String destinationName) {
+        String testDataFileName = TEST_DATA_DIRECTORY + destinationName;
+        deleteOldTestDataFile(testDataFileName);
+        return createFileWithName(testDataFileName);
     }
 
     private void writeData(Map<LocalDate, Map<String, Integer>> routesSeries, CSVRecordWriter writer) {

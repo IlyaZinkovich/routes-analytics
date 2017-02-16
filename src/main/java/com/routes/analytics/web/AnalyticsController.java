@@ -1,7 +1,7 @@
-package com.routes.analyzer.controller;
+package com.routes.analytics.web;
 
-import com.routes.analyzer.model.Prediction;
-import com.routes.analyzer.service.AnalyticsService;
+import com.routes.analytics.entities.Prediction;
+import com.routes.analytics.interactors.AnalyticsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

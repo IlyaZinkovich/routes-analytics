@@ -3,3 +3,10 @@ neo4j:
   user: neo4j
   password: root
   uri: http://localhost:7474
+
+server:
+  port: 8883
+
+routes:
+  service:
+    url: http://localhost:8882

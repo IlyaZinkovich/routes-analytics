@@ -1,6 +1,6 @@
-package com.routes.analyzer.analytics;
+package com.routes.analytics.predictors;
 
-import com.routes.analyzer.model.Prediction;
+import com.routes.analytics.entities.Prediction;
 import weka.classifiers.evaluation.NumericPrediction;
 import weka.classifiers.functions.GaussianProcesses;
 import weka.classifiers.timeseries.WekaForecaster;
